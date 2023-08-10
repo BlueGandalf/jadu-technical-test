@@ -15,7 +15,13 @@ class CheckerService implements Checker
     
     public function isAnagram(string $word, string $comparison) : bool
     {
-        return true;
+        $wordArray = str_split($word);
+        $comparisonArray = str_split($comparison);
+
+        sort($wordArray);
+        sort($comparisonArray);
+
+        return $wordArray === $comparisonArray;
     }
 
     public function isPangram(string $phrase) : bool
