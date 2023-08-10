@@ -11,10 +11,21 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/test')]
 class CheckerController extends AbstractController
 {
-    #[Route('/palindrome/{testWord}', name: 'test_palindrome', methods: ["GET", "POST"], requirements: ['testWord' => '\w+'])]
-    public function testIfPalindrome(Request $request, CheckerService $checkerService, ?string $testWord = null): Response
+    #[Route('/palindrome', name: 'test_palindrome', methods: ["GET", "POST"])]
+    public function testIfPalindrome(Request $request, CheckerService $checkerService): Response
     {
-        return $this->render('index.html.twig');
+        $testWord = $request->get("testWord");
+        
+        $params = [];
+        if ($testWord)
+        {
+            $params["result"] = [
+                "word" => $testWord,
+                "isPalindrome" => $checkerService->isPalindrome($testWord),
+            ];
+        }
+
+        return $this->render('Test/palindrome.html.twig', $params);
     }
 
     #[Route('/anagram/{testWord}/{comparison}', name: 'test_anagram', methods: ["GET", "POST"], requirements: ['testWord' => '\w+', 'comparison' => '\w+'])]

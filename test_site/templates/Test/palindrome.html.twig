@@ -1,0 +1,26 @@
+{% extends 'bootstrap.html.twig' %}
+
+{% block title %}
+Palindrome
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+    {% if result is defined %}
+        <div class="row">
+            <div class="alert alert-primary" role="alert">
+                The word '{{ result.word }}' is {{ (result.isPalindrome) ? '' : 'not' }} a palindrome.
+            </div>
+        </div>
+    {% endif %}
+    <div class="row">
+        <form action="" method="POST">
+            <div class="mb-3">
+                <label for="testWord" class="form-label">Word to test:</label>
+                <input type="text" class="form-control" id="testWord" name="testWord">
+            </div>
+            <input type="submit" class="btn btn-primary" value="Check for palindrome" />
+        </form>
+    </div>
+</div>
+{% endblock content %}
