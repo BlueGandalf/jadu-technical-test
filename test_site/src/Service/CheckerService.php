@@ -26,6 +26,17 @@ class CheckerService implements Checker
 
     public function isPangram(string $phrase) : bool
     {
+        $alphabetArray = range('a', 'z');
+        $phrase = mb_convert_case($phrase, MB_CASE_LOWER);
+
+        foreach($alphabetArray as $letter)
+        {
+            if (strpos($phrase, $letter) === false)
+            {
+                return false;
+            }
+        }
+
         return true;
     }
 }
