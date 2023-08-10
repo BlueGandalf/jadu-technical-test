@@ -8,7 +8,9 @@ class CheckerService implements Checker
 {
     public function isPalindrome(string $word) : bool
     {
-        return false;
+        $reversedWord = strrev($word);
+
+        return $word === $reversedWord;
     }
     
     public function isAnagram(string $word, string $comparison) : bool
