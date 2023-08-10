@@ -1,2 +1,0 @@
-# jadu-technical-test
- 
