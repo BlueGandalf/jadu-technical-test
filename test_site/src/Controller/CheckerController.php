@@ -28,10 +28,23 @@ class CheckerController extends AbstractController
         return $this->render('Test/palindrome.html.twig', $params);
     }
 
-    #[Route('/anagram/{testWord}/{comparison}', name: 'test_anagram', methods: ["GET", "POST"], requirements: ['testWord' => '\w+', 'comparison' => '\w+'])]
-    public function testIfAnagram(Request $request, CheckerService $checkerService, ?string $testWord = null, ?string $comparison = null): Response
+    #[Route('/anagram', name: 'test_anagram', methods: ["GET", "POST"])]
+    public function testIfAnagram(Request $request, CheckerService $checkerService): Response
     {
-        return $this->render('index.html.twig');
+        $firstWord = $request->get("testWord1");
+        $secondWord = $request->get("testWord2");
+
+        $params = [];
+        if ($firstWord && $secondWord)
+        {
+            $params["result"] = [
+                "word1" => $firstWord,
+                "word2" => $secondWord,
+                "isAnagram" => $checkerService->isAnagram($firstWord, $secondWord),
+            ];
+        }
+
+        return $this->render('Test/anagram.html.twig', $params);
     }
 
     #[Route('/pangram', name: 'test_pangram', methods: ["GET", "POST"])]

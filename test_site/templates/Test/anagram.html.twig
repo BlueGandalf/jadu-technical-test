@@ -1,0 +1,30 @@
+{% extends 'bootstrap.html.twig' %}
+
+{% block title %}
+Anagram
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+    {% if result is defined %}
+        <div class="row">
+            <div class="alert alert-primary" role="alert">
+                The words '{{ result.word1 }}' and '{{ result.word2 }}' are {{ (result.isAnagram) ? '' : 'not' }} anagrams.
+            </div>
+        </div>
+    {% endif %}
+    <div class="row">
+        <form action="" method="POST">
+            <div class="mb-3">
+                <label for="testWord1" class="form-label">First word to test:</label>
+                <input type="text" class="form-control" id="testWord1" name="testWord1">
+            </div>
+            <div class="mb-3">
+                <label for="testWord2" class="form-label">Second word to test:</label>
+                <input type="text" class="form-control" id="testWord2" name="testWord2">
+            </div>
+            <input type="submit" class="btn btn-primary" value="Check if these words are anagrams" />
+        </form>
+    </div>
+</div>
+{% endblock content %}
