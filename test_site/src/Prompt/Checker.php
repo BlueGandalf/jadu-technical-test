@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace App;
+namespace App\Prompt;
 
 /**
  * Pangrams, anagrams and palindromes
@@ -17,9 +17,7 @@ interface Checker
      * @param string $word
      * @return bool
      */
-    public function isPalindrome(string $word) : bool
-    {
-    }
+    public function isPalindrome(string $word) : bool;
     
     /**
      * An anagram is the result of rearranging the letters of a word or phrase 
@@ -30,9 +28,7 @@ interface Checker
      * @param string $comparison
      * @return bool
      */
-    public function isAnagram(string $word, string $comparison) : bool
-    {
-    }
+    public function isAnagram(string $word, string $comparison) : bool;
 
     /**
      * A Pangram for a given alphabet is a sentence using every letter of the 
@@ -41,7 +37,5 @@ interface Checker
      * @param string $phrase
      * @return bool
      */    
-    public function isPangram(string $phrase) : bool
-    {
-    }
+    public function isPangram(string $phrase) : bool;
 }
