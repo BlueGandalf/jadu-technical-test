@@ -9,12 +9,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CheckerController extends AbstractController
 {
-    #[Route('/', name: 'home')]
-    public function home(): Response
-    {
-        return $this->render('index.html.twig');
-    }
-
     #[Route('/test/palindrome/{testWord}', name: 'test_palindrome', methods: ["GET", "POST"], requirements: ['testWord' => '\w+'])]
     public function testIfPalindrome(CheckerService $checkerService, string $testWord = null): Response
     {
