@@ -1,0 +1,15 @@
+{% extends 'bootstrap.html.twig' %}
+
+{% block title %}
+Peter Smith | Welcome!
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div class='btn-group btn-group-lg'>
+        <a class="btn btn-outline-dark" href='{{ path('test_palindrome') }}'>isPalindrome</a>
+        <a class="btn btn-outline-dark" href='{{ path('test_anagram') }}'>isAnagram</a>
+        <a class="btn btn-outline-dark" href='{{ path('test_pangram') }}'>isPangram</a>
+    </div>
+</div>
+{% endblock content %}
