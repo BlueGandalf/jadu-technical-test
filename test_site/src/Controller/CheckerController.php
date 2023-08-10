@@ -50,6 +50,17 @@ class CheckerController extends AbstractController
     #[Route('/pangram', name: 'test_pangram', methods: ["GET", "POST"])]
     public function testIfPangram(Request $request, CheckerService $checkerService): Response
     {
-        return $this->render('index.html.twig');
+        $testPhrase = $request->get("testPhrase");
+
+        $params = [];
+        if ($testPhrase)
+        {
+            $params["result"] = [
+                "phrase" => $testPhrase,
+                "isPangram" => $checkerService->isPangram($testPhrase),
+            ];
+        }
+
+        return $this->render('Test/pangram.html.twig', $params);
     }
 }

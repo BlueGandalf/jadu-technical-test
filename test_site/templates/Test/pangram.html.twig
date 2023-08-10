@@ -1,0 +1,27 @@
+{% extends 'bootstrap.html.twig' %}
+
+{% block title %}
+Pangram
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+    {% if result is defined %}
+        <div class="row">
+            <div class="alert alert-primary" role="alert">
+                The following phrase is {{ (result.isPangram) ? '' : 'not' }} a pangram:<br>
+                {{ result.phrase }}
+            </div>
+        </div>
+    {% endif %}
+    <div class="row">
+        <form action="" method="POST">
+            <div class="mb-3">
+                <label for="testPhrase" class="form-label">Phrase to test:</label>
+                <input type="textarea" class="form-control" id="testPhrase" name="testPhrase">
+            </div>
+            <input type="submit" class="btn btn-primary" value="Check for pangram" />
+        </form>
+    </div>
+</div>
+{% endblock content %}
